@@ -66,6 +66,10 @@ export const resolvers = {
             { id, name }: { id: number; name: string },
             __: unknown,
         ): Promise<pokemonModel> => {
+            if(id && name)
+            {
+                throw new Error("No se puede buscar por id y nombre al mismo tiempo");
+            }
             if (name) {
                 name = name.toLowerCase();
             }

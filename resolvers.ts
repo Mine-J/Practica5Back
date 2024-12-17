@@ -74,9 +74,7 @@ export const resolvers = {
                 name = name.toLowerCase();
             }
 
-            const response = await fetch(
-                `https://pokeapi.co/api/v2/pokemon/${id || name}`,
-            );
+            const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${id || name}`);
 
             if (!response.ok) {
                 throw new Error(
@@ -85,7 +83,7 @@ export const resolvers = {
             }
 
             const data = await response.json();
-
+            
             const abilities: abilitiesModel[] = data.abilities.map((elem) => ({
                 name: elem.ability.name,
                 url: elem.ability.url,
